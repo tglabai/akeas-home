@@ -1,114 +1,34 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Akeas Home - Produits</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
-  <style>
-    /* Correções básicas e estilos do botão */
-    .card {
-      background: #2a2a2a;
-      color: #fff;
-      padding: 16px;
-      margin: 10px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .card-img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-    .card-title {
-      font-size: 1.2rem;
-      margin: 10px 0 5px;
-    }
-    .card-desc {
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-    .btn-details {
-      background-color: #e0a96d;
-      color: #000;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .btn-details:hover {
-      background-color: #cf8a3c;
-    }
-    /* Modale */
-    #modal {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.7);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    #modal.active {
-      display: flex;
-    }
-    .modal-content {
-      background: #1f1f1f;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      width: 90%;
-      text-align: center;
-    }
-    .modal-content img {
-      max-width: 100%;
-      border-radius: 8px;
-    }
-    .modal-content h2 {
-      margin-top: 15px;
-    }
-    .modal-content p {
-      margin: 10px 0 20px;
-    }
-    .modal-content a {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #25d366;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-    }
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 24px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akeas Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body class="dark-mode">
-  <header class="header">
-    <img src="assets/images/Logo/logoakeas.jpg" alt="Akeas Home Logo" class="logo" />
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="products.html" class="active">Produits</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="header">
+  <img src="assets/images/Logo/logoakeas.jpg" alt="Akeas Home Logo" class="logo">
+  
+  <button class="burger" id="burger-menu" aria-label="Menu mobile">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="products.html">Produits</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+ 
 
   <section class="hero">
     
@@ -259,6 +179,16 @@ async function loadProducts() {
 
   loadProducts();
 </script>
+<script>
+  const burger = document.getElementById('burger-menu');
+  const nav = document.getElementById('nav-menu');
 
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+
+
+
+</script>
 </body>
 </html>

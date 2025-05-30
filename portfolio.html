@@ -10,18 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
 </head>
 <body class="dark-mode">
-  <header class="header">
-    <img src="assets/images/Logo/logoakeas.jpg" alt="Akeas Home Logo" class="logo">
-    <nav>
-      <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="products.html">Produits</a></li>
-        <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="contact.html"></a>Contact</li>
-      </ul>
-    </nav>
-  </header>
+<header class="header">
+  <img src="assets/images/Logo/logoakeas.jpg" alt="Akeas Home Logo" class="logo">
+  
+  <button class="burger" id="burger-menu" aria-label="Menu mobile">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="products.html">Produits</a></li>
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+ 
   <section class="section" id="portfolio">
     <h1>Notre Portfolio</h1>
     <p style="text-align:center; max-width:600px; margin: 0 auto 3rem;">
@@ -40,5 +47,17 @@
   <footer>
     &copy; 2025 Akeas Home - Tous droits réservés
   </footer>
+
+  <script>
+  const burger = document.getElementById('burger-menu');
+  const nav = document.getElementById('nav-menu');
+
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('open');
+  });
+
+
+
+</script>
 </body>
 </html>
