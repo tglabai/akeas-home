@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Akeas Home - Produits</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Correções básicas e estilos do botão */
+    .card {
+      background: #2a2a2a;
+      color: #fff;
+      padding: 16px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .card-img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      margin: 10px 0 5px;
+    }
+    .card-desc {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .btn-details {
+      background-color: #e0a96d;
+      color: #000;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-details:hover {
+      background-color: #cf8a3c;
+    }
+    /* Modale */
+    #modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    #modal.active {
+      display: flex;
+    }
+    .modal-content {
+      background: #1f1f1f;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      text-align: center;
+    }
+    .modal-content img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .modal-content h2 {
+      margin-top: 15px;
+    }
+    .modal-content p {
+      margin: 10px 0 20px;
+    }
+    .modal-content a {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="dark-mode">
+  <header class="header">
+    <img src="assets/images/Logo/logoakeas.jpg" alt="Akeas Home Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html" class="active">Produits</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    
+    <h1>Nos Produits</h1>
+    <p>Découvrez notre sélection de produits de style Moyen-Orient</p>
+  </section>
+<section style="text-align: center; padding: 20px;">
+  <input type="text" id="search-input" placeholder="Rechercher un produit..." style="padding: 8px; width: 60%; border-radius: 6px; border: none;" />
+ <select id="category-filter">
+  <option value="all">Toutes les catégories</option>
+  <option value="parfums">Parfums</option>
+  <option value="vêtements">Vêtements</option>
+  <option value="spirituel">Spiritualité</option>
+  <option value="maison">Maison</option>
+  <option value="déco">Décoration</option>
+  <option value="bijoux">Bijoux</option>
+  <option value="accessoires">Accessoires</option>
+  <option value="loisirs">Loisirs</option>
+</select>
+
+</section>
+
+  <section id="products-container">
+    <!-- Produits chargés par JS -->
+  </section>
+
+  <!-- Modal pour les détails -->
+  <div id="modal">
+    <div class="modal-content">
+      <span id="modal-close" class="modal-close">&times;</span>
+      <img id="modal-image" src="" alt="" />
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <a id="modal-whatsapp" href="#" target="_blank">Commander via WhatsApp</a>
+    </div>
+  </div>
+
+  <footer style="text-align:center; padding:20px; background:#1f1f1f;">
+    &copy; 2025 Akeas Home - Tous droits réservés
+  </footer>
+
+ <script>
+  let productsData = [];
+
+  function openModal(product) {
+    const modal = document.getElementById('modal');
+    document.getElementById('modal-image').src = product.image;
+    document.getElementById('modal-image').alt = product.name;
+    document.getElementById('modal-title').textContent = product.name;
+    document.getElementById('modal-desc').textContent = product.description;
+
+    const phone = '33750332332';
+    const message = encodeURIComponent(`Bonjour, je souhaite commander : ${product.name}`);
+    document.getElementById('modal-whatsapp').href = `https://wa.me/${phone}?text=${message}`;
+
+    modal.classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+  }
+
+  function renderProducts(products) {
+    const container = document.getElementById('products-container');
+    container.innerHTML = '';
+
+    if (products.length === 0) {
+      container.innerHTML = '<p style="color:white; text-align:center;">Aucun produit trouvé.</p>';
+      return;
+    }
+
+    products.forEach(product => {
+      const card = document.createElement('article');
+      card.className = 'card';
+
+      card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="card-img" />
+        <div class="card-content">
+          <h3 class="card-title">${product.name}</h3>
+          <p class="card-desc">${product.description}</p>
+          <button class="btn-details">Détails</button>
+        </div>
+      `;
+
+      card.querySelector('.btn-details').addEventListener('click', () => openModal(product));
+      container.appendChild(card);
+    });
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target === e.currentTarget) closeModal();
+  });
+
+async function loadProducts() {
+  try {
+    productsData = [
+      { id: 1, name: "Parfum Oriental", description: "Un parfum unique et envoûtant", image: "assets/images/products/parfum.jpg", category: "parfums" },
+      { id: 2, name: "Hijab Élégant", description: "Confort et style au quotidien", image: "assets/images/products/hijab.jpg", category: "vêtements" },
+      { id: 3, name: "Mala Traditionnel", description: "Perles de prière artisanales", image: "assets/images/products/mala.jpg", category: "spirituel" },
+      { id: 4, name: "Cobertor Douillet", description: "Couverture chaude et confortable", image: "assets/images/products/cobertor.jpg", category: "maison" },
+      { id: 5, name: "Bouteille d'eau", description: "Bouteille d'eau stylée et pratique", image: "assets/images/products/Bouteille.jpg", category: "loisirs" },
+      { id: 6, name: "Tapis Oriental", description: "Tapis décoratif fait main", image: "assets/images/products/tapis.jpg", category: "déco" },
+      { id: 7, name: "Bougies Parfumées", description: "Ambiance douce et chaleureuse", image: "assets/images/products/bougies.jpg", category: "déco" },
+      { id: 8, name: "Lanternes en Métal", description: "Éclairage traditionnel et élégant", image: "assets/images/products/lanterne.jpg", category: "déco" },
+      { id: 9, name: "Écharpe en Soie", description: "Élégance et confort", image: "assets/images/products/echarpe.jpg", category: "vêtements" },
+      { id: 10, name: "Bracelets Artisanaux", description: "Bijoux faits main", image: "assets/images/products/bracelet.jpg", category: "bijoux" },
+      { id: 11, name: "Vases Décoratifs", description: "Design unique et coloré", image: "assets/images/products/vase.jpg", category: "déco" },
+      { id: 12, name: "Assiettes en Céramique", description: "Artisanat de qualité", image: "assets/images/products/assiette.jpg", category: "maison" },
+      { id: 13, name: "Nattes de Prière", description: "Tapis pour la prière confortable", image: "assets/images/products/natte.jpg", category: "spirituel" },
+      { id: 14, name: "Chapelets en Bois", description: "Accessoires spirituels traditionnels", image: "assets/images/products/chapelet.jpg", category: "spirituel" },
+      { id: 15, name: "Sacs à Main Brodés", description: "Sacs faits main avec broderies", image: "assets/images/products/sac.jpg", category: "accessoires" },
+      { id: 16, name: "Coussins Décoratifs", description: "Ajoutez une touche orientale", image: "assets/images/products/coussin.jpg", category: "déco" },
+      { id: 17, name: "Théières en Cuivre", description: "Théière artisanale traditionnelle", image: "assets/images/products/theiere.jpg", category: "maison" },
+      { id: 18, name: "Tasses à Thé", description: "Set de tasses décoratives", image: "assets/images/products/tasse.jpg", category: "maison" },
+      { id: 19, name: "Pendules Murales", description: "Horloge style oriental", image: "assets/images/products/pendule.jpg", category: "déco" },
+      { id: 20, name: "Lampes de Table", description: "Éclairage d'ambiance", image: "assets/images/products/lampe.jpg", category: "déco" },
+      { id: 21, name: "Parures de Lit", description: "Linge de lit élégant et confortable", image: "assets/images/products/parure.jpg", category: "maison" },
+      { id: 22, name: "Plats de Service", description: "Vaisselle pour occasions spéciales", image: "assets/images/products/plat.jpg", category: "maison" },
+      { id: 23, name: "Décorations Murales", description: "Art mural fait main", image: "assets/images/products/deco_murale.jpg", category: "déco" },
+      { id: 24, name: "Bijoux en Argent", description: "Accessoires élégants et traditionnels", image: "assets/images/products/bijoux.jpg", category: "bijoux" },
+      { id: 25, name: "Parfum d’Ambiance", description: "Diffuseur avec senteurs orientales", image: "assets/images/products/parfum_ambiance.jpg", category: "parfums" }
+    ];
+
+    renderProducts(productsData);
+  } catch (err) {
+    console.error("Erreur de chargement des produits :", err);
+  }
+}
+
+
+
+  function filterProducts() {
+    const search = document.getElementById('search-input').value.toLowerCase();
+    const category = document.getElementById('category-filter').value;
+
+    const filtered = productsData.filter(product => {
+      const matchSearch = product.name.toLowerCase().includes(search) || product.description.toLowerCase().includes(search);
+      const matchCategory = category === 'all' || product.category === category;
+      return matchSearch && matchCategory;
+    });
+
+    renderProducts(filtered);
+  }
+
+  document.getElementById('search-input').addEventListener('input', filterProducts);
+  document.getElementById('category-filter').addEventListener('change', filterProducts);
+
+  loadProducts();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akeas Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+  <header class="header">
+    <img src="assets/images/Logo/logoakeas.jpg" alt="Akeas Home Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="products.html">Produits</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html"></a>Contact</li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="accueil" class="hero">
+    <h1>Bienvenue chez Akeas Home</h1>
+    <p>Élégance orientale pour votre quotidien</p>
+  </section>
+
+  <section id="produits" class="section">
+    
+    <ul class="categories">
+      <li>Masin</li>
+      <li>Cadeaux</li>
+      <li>Déco</li>
+      <li>Loisirs</li>
+    </ul>
+    <div class="produits">
+      <div class="produit">
+        <img src="assets/images/products/parfum.jpg" alt="Parfum oriental">
+        <h3>Parfum Oriental</h3>
+        <p>Un parfum unique et envoûtant</p>
+        <a href="https://wa.me/0000000000" class="btn">Commander</a>
+      </div>
+      <div class="produit">
+        <img src="assets/images/products/hijab.jpg" alt="Hijab élégant">
+        <h3>Hijab Élégant</h3>
+        <p>Confort et style au quotidien</p>
+        <a href="https://wa.me/0000000000" class="btn">Commander</a>
+      </div>
+      <!-- + autres produits -->
+    </div>
+  </section>
+
+  <section id="portfolio" class="section">
+    <h2>Notre Univers</h2>
+    <p>Un aperçu de notre collection en images.</p>
+    <div class="galerie">
+      <img src="assets/images/photo1.jpg" alt="Produit 1">
+      <img src="assets/images/photo2.jpg" alt="Produit 2">
+      <img src="assets/images/photo3.jpg" alt="Produit 3">
+    </div>
+  </section>
+
+  <section id="saas" class="section">
+    <h2>Automatisation avec TechGroup</h2>
+    <p>Gestion simplifiée des commandes, leads et messages.</p>
+    <ul>
+      <li>📦 Catalogue produit dynamique</li>
+      <li>🤖 Chatbot IA pour assistance client</li>
+      <li>📊 Dashboard : suivi des ventes</li>
+      <li>📩 Formulaire de génération de leads</li>
+    </ul>
+    <form class="lead-form">
+      <input type="text" placeholder="Nom">
+      <input type="email" placeholder="Email">
+      <button type="submit">Recevoir une démo</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Akeas Home. Propulsé par TechGroup.</p>
+  </footer>
+
+  <section class="section produits" id="products-container">
+  <!-- Les produits seront injectés ici par JS -->
+</section>
+
+<script>
+  // Charge le JSON local (ici il faut que le fichier JSON soit dans le même dossier ou accessible)
+  fetch('akeas_products.json')
+    .then(response => response.json())
+    .then(products => {
+      const container = document.getElementById('products-container');
+      container.innerHTML = ''; // Vide avant d'ajouter
+      
+      products.forEach(product => {
+        const productEl = document.createElement('div');
+        productEl.className = 'produit';
+        productEl.innerHTML = `
+          <img src="${product.image}" alt="${product.name}" />
+          <h3>${product.name}</h3>
+          <p>${product.description}</p>
+          <a href="https://wa.me/1234567890?text=Bonjour,%20je%20suis%20intéressé%20par%20le%20produit%20${encodeURIComponent(product.name)}" class="btn" target="_blank">Commander via WhatsApp</a>
+        `;
+        container.appendChild(productEl);
+      });
+    })
+    .catch(err => {
+      console.error('Erreur chargement produits:', err);
+    });
+</script>
+
+</body>
+</html>
