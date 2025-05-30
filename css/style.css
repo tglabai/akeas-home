@@ -358,3 +358,46 @@ footer {
 #category-filter:focus {
   border-color: #7c3aed;
 }
+.galerie-boutique {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.galerie-boutique img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  object-fit: cover;
+}
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.social-grid img {
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+.social-grid img:hover {
+  transform: scale(1.05);
+}
+.categories {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.categories li {
+  list-style: none;
+  padding: 8px 16px;
+  background: #333;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.categories li:hover,
+.categories li.active {
+  background: #555;
+}

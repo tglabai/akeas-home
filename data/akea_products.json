@@ -1,127 +1,38 @@
 [
   {
+    "id": 1,
     "name": "Parfum Oriental",
-    "description": "Un parfum unique et envoûtant",
+    "description": "Laissez-vous emporter par les notes chaleureuses et boisées de notre parfum oriental, une fragrance raffinée qui éveille les sens et incarne l'élégance intemporelle des traditions de l'Orient.",
     "image": "assets/images/products/parfum.jpg"
   },
   {
+    "id": 2,
     "name": "Hijab Élégant",
-    "description": "Confort et style au quotidien",
+    "description": "Ce hijab élégant allie confort et sophistication. Conçu avec des tissus doux et respirants, il sublime votre tenue au quotidien tout en offrant une couvrance parfaite.",
     "image": "assets/images/products/hijab.jpg"
   },
   {
+    "id": 3,
     "name": "Mala Traditionnel",
-    "description": "Perles de prière artisanales",
+    "description": "Fabriqué à la main avec soin, ce mala traditionnel est composé de perles naturelles utilisées pour la méditation et la prière. Un symbole spirituel riche en histoire.",
     "image": "assets/images/products/mala.jpg"
   },
   {
+    "id": 4,
     "name": "Cobertor Douillet",
-    "description": "Couverture chaude et confortable",
+    "description": "Enveloppez-vous de douceur avec ce cobertor douillet. Parfait pour les soirées fraîches, il apporte chaleur et confort tout en ajoutant une touche d’élégance à votre intérieur.",
     "image": "assets/images/products/cobertor.jpg"
   },
   {
+    "id": 5,
     "name": "Bouteille d'eau",
-    "description": "Bouteille d'eau stylée et pratique",
+    "description": "Emportez partout cette bouteille d’eau au design raffiné. Fabriquée en matériaux durables, elle garde vos boissons fraîches tout en reflétant votre style unique.",
     "image": "assets/images/products/Bouteille.jpg"
   },
   {
+    "id": 6,
     "name": "Tapis Oriental",
-    "description": "Tapis décoratif fait main",
+    "description": "Apportez une ambiance orientale authentique à votre espace avec ce tapis fait main. Ses motifs détaillés et ses couleurs chaleureuses en font une pièce maîtresse décorative.",
     "image": "assets/images/products/tapis.jpg"
-  },
-  {
-    "name": "Bougies Parfumées",
-    "description": "Ambiance douce et chaleureuse",
-    "image": "assets/images/products/bougies.jpg"
-  },
-  {
-    "name": "Lanternes en Métal",
-    "description": "Éclairage traditionnel et élégant",
-    "image": "assets/images/products/lanterne.jpg"
-  },
-  {
-    "name": "Écharpe en Soie",
-    "description": "Élégance et confort",
-    "image": "assets/images/products/echarpe.jpg"
-  },
-  {
-    "name": "Bracelets Artisanaux",
-    "description": "Bijoux faits main",
-    "image": "assets/images/products/bracelet.jpg"
-  },
-  {
-    "name": "Vases Décoratifs",
-    "description": "Design unique et coloré",
-    "image": "assets/images/products/vase.jpg"
-  },
-  {
-    "name": "Assiettes en Céramique",
-    "description": "Artisanat de qualité",
-    "image": "assets/images/products/assiette.jpg"
-  },
-  {
-    "name": "Nattes de Prière",
-    "description": "Tapis pour la prière confortable",
-    "image": "assets/images/products/natte.jpg"
-  },
-  {
-    "name": "Chapelets en Bois",
-    "description": "Accessoires spirituels traditionnels",
-    "image": "assets/images/products/chapelet.jpg"
-  },
-  {
-    "name": "Sacs à Main Brodés",
-    "description": "Sacs faits main avec broderies",
-    "image": "assets/images/products/sac.jpg"
-  },
-  {
-    "name": "Coussins Décoratifs",
-    "description": "Ajoutez une touche orientale",
-    "image": "assets/images/products/coussin.jpg"
-  },
-  {
-    "name": "Théières en Cuivre",
-    "description": "Théière artisanale traditionnelle",
-    "image": "assets/images/products/theiere.jpg"
-  },
-  {
-    "name": "Tasses à Thé",
-    "description": "Set de tasses décoratives",
-    "image": "assets/images/products/tasse.jpg"
-  },
-  {
-    "name": "Pendules Murales",
-    "description": "Horloge style oriental",
-    "image": "assets/images/products/pendule.jpg"
-  },
-  {
-    "name": "Lampes de Table",
-    "description": "Éclairage d'ambiance",
-    "image": "assets/images/products/lampe.jpg"
-  },
-  {
-    "name": "Parures de Lit",
-    "description": "Linge de lit élégant et confortable",
-    "image": "assets/images/products/parure.jpg"
-  },
-  {
-    "name": "Plats de Service",
-    "description": "Vaisselle pour occasions spéciales",
-    "image": "assets/images/products/plat.jpg"
-  },
-  {
-    "name": "Décorations Murales",
-    "description": "Art mural fait main",
-    "image": "assets/images/products/deco_murale.jpg"
-  },
-  {
-    "name": "Bijoux en Argent",
-    "description": "Accessoires élégants et traditionnels",
-    "image": "assets/images/products/bijoux.jpg"
-  },
-  {
-    "name": "Parfum d’Ambiance",
-    "description": "Diffuseur avec senteurs orientales",
-    "image": "assets/images/products/parfum_ambiance.jpg"
   }
 ]
